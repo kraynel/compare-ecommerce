@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import Layout from "../components/layout"
 
 const categories = {
   checkout: {
@@ -94,7 +95,7 @@ export default function Home() {
   })
 
   return (
-    <div class="m-10">
+    <Layout>
       <p>{currentQuestion && currentQuestion.label}</p>
       <p class="mt-4">
         {currentQuestion ? (
@@ -149,6 +150,6 @@ export default function Home() {
           )
         })}
       </div>
-    </div>
+    </Layout>
   )
 }
