@@ -15,14 +15,13 @@ const categories = {
     algolia: 0,
   },
   content: {
-    shopify: 0,
     contentful: 0,
   },
 }
 
 const questions = [
   {
-    label: "personnalisation front poussée ?",
+    label: "Personnalisation front poussée ?",
     answers: [
       {
         label: "oui",
@@ -35,7 +34,7 @@ const questions = [
     ],
   },
   {
-    label: "avez vous des règles métier complexes ?",
+    label: "Avez vous des règles métier complexes ?",
     answers: [
       {
         label: "oui",
@@ -52,7 +51,7 @@ const questions = [
   },
 
   {
-    label: "avez vous une recherce avancée ?",
+    label: "Avez vous un besoin de recherce avancée ?",
     answers: [
       {
         label: "oui",
@@ -65,7 +64,8 @@ const questions = [
     ],
   },
   {
-    label: "nombre de produits ou arborescence complexe",
+    label:
+      "Y a-t-il des contraintes créées par le nombre de produits ou une arborescence complexe ?",
     answers: [
       {
         label: "oui",
@@ -94,40 +94,44 @@ export default function Home() {
   })
 
   return (
-    <div>
-      <span>{currentQuestion && currentQuestion.label}</span>
-      {currentQuestion ? (
-        currentQuestion.answers.map(a => (
-          <button
-            value={a.label}
-            key={a.label}
-            onClick={e => {
-              setScores(scores => {
-                let newScores = { ...scores }
-                a.ponderation.forEach(p => {
-                  newScores[p.category] = { ...scores[p.category] }
-                  newScores[p.category][p.key] += p.value
+    <div class="m-10">
+      <p>{currentQuestion && currentQuestion.label}</p>
+      <p class="mt-4">
+        {currentQuestion ? (
+          currentQuestion.answers.map(a => (
+            <button
+              class="mr-4 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+              value={a.label}
+              key={a.label}
+              onClick={e => {
+                setScores(scores => {
+                  let newScores = { ...scores }
+                  a.ponderation.forEach(p => {
+                    newScores[p.category] = { ...scores[p.category] }
+                    newScores[p.category][p.key] += p.value
+                  })
+                  return newScores
                 })
-                return newScores
-              })
-              setQuestionIndex(index => index + 1)
+                setQuestionIndex(index => index + 1)
+              }}
+            >
+              {a.label}
+            </button>
+          ))
+        ) : (
+          <button
+            class="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded"
+            onClick={() => {
+              setQuestionIndex(0)
+              setScores(categories)
             }}
+            value="reset"
           >
-            {a.label}
+            Reset
           </button>
-        ))
-      ) : (
-        <button
-          onClick={() => {
-            setQuestionIndex(0)
-            setScores(categories)
-          }}
-          value="reset"
-        >
-          Reset
-        </button>
-      )}
-      <div>
+        )}
+      </p>
+      <div class="mt-10">
         {Object.keys(scores).map(category => {
           let maxScore = 0
           let maxName = defaultTech
@@ -139,7 +143,7 @@ export default function Home() {
           })
 
           return (
-            <div key={category}>
+            <div class="capitalize" key={category}>
               {category} : {maxName}
             </div>
           )
