@@ -1,5 +1,6 @@
 import React from "react"
 import bg from "../assets/bg.svg"
+import theodo from "../assets/theodo.svg"
 
 export default function Layout({ children }) {
   console.log(bg)
@@ -12,16 +13,13 @@ export default function Layout({ children }) {
         <div class="w-full flex items-center justify-between">
           <a
             class="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
-            href="#"
+            href="/"
           >
-            <svg
-              class="h-8 fill-current text-indigo-600 pr-2"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm-5.6-4.29a9.95 9.95 0 0 1 11.2 0 8 8 0 1 0-11.2 0zm6.12-7.64l3.02-3.02 1.41 1.41-3.02 3.02a2 2 0 1 1-1.41-1.41z" />
-            </svg>{" "}
-            Theodo
+            <img
+              class="h-32 fill-current text-indigo-600 pr-2"
+              src={theodo}
+              alt="Theodo"
+            />
           </a>
 
           <div class="flex w-1/2 justify-end content-center">
@@ -55,7 +53,7 @@ export default function Layout({ children }) {
         </div>
       </div>
 
-      <div class="container pt-24 md:pt-48 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+      <div class="container pt-16 md:pt-32 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">
         <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
           <h1 class="my-4 text-3xl md:text-5xl text-purple-800 font-bold leading-tight text-center md:text-left slide-in-bottom-h1">
             Construisez votre stack e-commerce !
@@ -65,13 +63,13 @@ export default function Layout({ children }) {
             best-of-breed
           </p>
         </div>
-        <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
+        <div class="pl-32  flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
           {children}
         </div>
         <div class="w-full pt-16 pb-6 text-sm text-center md:text-left fade-in">
-          <a class="text-gray-500 no-underline hover:no-underline" href="#">
+          <span class="text-gray-500 no-underline hover:no-underline">
             &copy; 2020
-          </a>
+          </span>
         </div>
       </div>
     </div>
