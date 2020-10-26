@@ -1,5 +1,5 @@
 import React from "react"
-import bg from "./bg.svg"
+import bg from "../assets/bg.svg"
 
 export default function Layout({ children }) {
   console.log(bg)

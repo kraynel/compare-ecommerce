@@ -1,5 +1,11 @@
 import React, { useState } from "react"
 import Layout from "../components/layout"
+import shopifyLogo from "../assets/shopify.svg"
+import algoliaLogo from "../assets/algolia.svg"
+import akeneoLogo from "../assets/akeneo.svg"
+import syliusLogo from "../assets/sylius.svg"
+import vuestorefrontLogo from "../assets/vuestorefront.svg"
+import contentfulLogo from "../assets/contentful.svg"
 
 const categories = {
   checkout: {
@@ -80,6 +86,25 @@ const questions = [
   },
 ]
 
+const getLogo = name => {
+  switch (name) {
+    case "algolia":
+      return algoliaLogo
+    case "shopify":
+      return shopifyLogo
+    case "contentful":
+      return contentfulLogo
+    case "sylius":
+      return syliusLogo
+    case "akeneo":
+      return akeneoLogo
+    case "vuestorefront":
+      return vuestorefrontLogo
+    default:
+      return null
+  }
+}
+
 export default function Home() {
   const [questionIndex, setQuestionIndex] = useState(0)
   const [scores, setScores] = useState(categories)
@@ -145,7 +170,14 @@ export default function Home() {
 
           return (
             <div class="capitalize" key={category}>
-              {category} : {maxName}
+              {category} :{" "}
+              {getLogo(maxName) && (
+                <img
+                  className="w-20 inline-block"
+                  src={getLogo(maxName)}
+                  alt={maxName}
+                />
+              )}
             </div>
           )
         })}
