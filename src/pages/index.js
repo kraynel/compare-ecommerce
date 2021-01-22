@@ -28,7 +28,9 @@ const categories = {
 
 const questions = [
   {
-    label: "Personnalisation front poussée ?",
+    label: "Avez vous besoin d'un rendu fortement personnalisé ?",
+    sublabel:
+      "La plupart des moteurs ecommerce proposent des templates 'tout en un', qui permettent de démarrer sans phase de design avancée. Ces templates sont personnalisables, mais dans le cas de personnalisation fortes ou d'une veritable image de marque très poussée, ces moteurs de templatings peuvent être trop limités.",
     answers: [
       {
         label: "oui",
@@ -42,6 +44,8 @@ const questions = [
   },
   {
     label: "Avez vous des règles métier complexes ?",
+    sublabel:
+      "Certains sites e-commerce partent de mécanismes très classiques, pas besoin de réinventer la roue !",
     answers: [
       {
         label: "oui",
@@ -59,6 +63,8 @@ const questions = [
 
   {
     label: "Avez vous un besoin de recherce avancée ?",
+    sublabel:
+      "C'est parfois le cas si vous offrez un très grand nombre de références, ou que vous souhaitez notamment réordonner les résultats de recherche avec des règles marketing.",
     answers: [
       {
         label: "oui",
@@ -73,6 +79,8 @@ const questions = [
   {
     label:
       "Y a-t-il des contraintes créées par le nombre de produits ou une arborescence complexe ?",
+    sublabel:
+      "Un grand nombre de produits ou des spécifictés de mises en lignes peuvent vous contraintre à utiliser un PIM.",
     answers: [
       {
         label: "oui",
@@ -121,66 +129,85 @@ export default function Home() {
 
   return (
     <Layout>
-      <p>{currentQuestion && currentQuestion.label}</p>
-      <p class="mt-4">
-        {currentQuestion ? (
-          currentQuestion.answers.map(a => (
-            <button
-              class="mr-4 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-              value={a.label}
-              key={a.label}
-              onClick={e => {
-                setScores(scores => {
-                  let newScores = { ...scores }
-                  a.ponderation.forEach(p => {
-                    newScores[p.category] = { ...scores[p.category] }
-                    newScores[p.category][p.key] += p.value
+      <div className="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
+        <h1 className="my-4 text-3xl md:text-5xl text-purple-800 font-bold leading-tight text-center md:text-left slide-in-bottom-h1">
+          Construisez votre stack e-commerce !
+        </h1>
+        <p className="leading-normal text-base md:text-2xl mb-8 text-center md:text-left slide-in-bottom-subtitle">
+          Des SaaS, de l'open-source, du custom. Adoptez l'approche
+          best-of-breed
+        </p>
+      </div>
+      <div className="pl-32  flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
+        <p className="mb-4 font-bold text-gray-900">
+          {currentQuestion && currentQuestion.label}
+        </p>
+        <p className="text-gray-700">
+          {currentQuestion && currentQuestion.sublabel}
+        </p>
+        <p className="mt-4">
+          {currentQuestion ? (
+            currentQuestion.answers.map(a => (
+              <button
+                className="mr-4 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                value={a.label}
+                key={a.label}
+                onClick={e => {
+                  setScores(scores => {
+                    let newScores = { ...scores }
+                    a.ponderation.forEach(p => {
+                      newScores[p.category] = { ...scores[p.category] }
+                      newScores[p.category][p.key] += p.value
+                    })
+                    return newScores
                   })
-                  return newScores
-                })
-                setQuestionIndex(index => index + 1)
+                  setQuestionIndex(index => index + 1)
+                }}
+              >
+                {a.label}
+              </button>
+            ))
+          ) : (
+            <button
+              className="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded"
+              onClick={() => {
+                setQuestionIndex(0)
+                setScores(categories)
               }}
+              value="reset"
             >
-              {a.label}
+              Réessayer
             </button>
-          ))
-        ) : (
-          <button
-            class="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded"
-            onClick={() => {
-              setQuestionIndex(0)
-              setScores(categories)
-            }}
-            value="reset"
-          >
-            Reset
-          </button>
-        )}
-      </p>
-      <div class="mt-10">
-        {Object.keys(scores).map(category => {
-          let maxScore = 0
-          let maxName = defaultTech
-          Object.keys(scores[category]).forEach(tech => {
-            if (scores[category][tech] > maxScore) {
-              maxScore = category[tech]
-              maxName = tech
-            }
-          })
+          )}
+        </p>
+        {!currentQuestion && (
+          <div className="mt-10">
+            <p className="mb-4 font-bold text-gray-900">Nos recommandations</p>
+            {Object.keys(scores).map(category => {
+              let maxScore = 0
+              let maxName = defaultTech
+              Object.keys(scores[category]).forEach(tech => {
+                if (scores[category][tech] > maxScore) {
+                  maxScore = category[tech]
+                  maxName = tech
+                }
+              })
 
-          return (
-            <div class="capitalize" key={category}>
-              {category} :{" "}
-              {getLogo(maxName) && (
-                <img
-                  className="w-20 inline-block"
-                  src={getLogo(maxName)}
-                  alt={maxName}
-                />
-              )}
-            </div>
-          )
-        })}
+              return (
+                <div className="capitalize" key={category}>
+                  {category} :{" "}
+                  {getLogo(maxName) && (
+                    <img
+                      className="w-20 inline-block"
+                      src={getLogo(maxName)}
+                      alt={maxName}
+                    />
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        )}
       </div>
     </Layout>
   )
