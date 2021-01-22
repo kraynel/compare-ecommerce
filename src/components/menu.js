@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import theodo from "../assets/theodo.svg"
 import MenuItem from "./menu-item"
-
+import { Link } from "gatsby"
 export default function Menu() {
   const [openStates, setOpenStates] = useState({})
   const getStateForMenu = menu => openStates[menu] || false
@@ -13,10 +13,10 @@ export default function Menu() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
-            <a href="#">
+            <Link to="/">
               <span className="sr-only">Theodo</span>
               <img className="h-8 w-auto sm:h-10" src={theodo} alt="" />
-            </a>
+            </Link>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
             <button
@@ -47,49 +47,36 @@ export default function Menu() {
             <MenuItem
               isOn={getStateForMenu("core")}
               setIsOn={setStateForMenu("core")}
-              title="Core E-commerce"
+              title="Briques e-commerce"
               subitems={[
-                { title: "Shopify", subtitle: "", link: "/global/shopify" },
-                { title: "Sylius", subtitle: "", link: "/global/sylius" },
                 {
-                  title: "BigCommerce2",
-                  subtitle: "",
-                  link: "/global/bigcommerce",
+                  title: "Core",
+                  subtitle: "Le moteur principal",
+                  link: "/global",
+                },
+                {
+                  title: "Front",
+                  subtitle: "Votre vitrine",
+                  link: "/front",
+                },
+                {
+                  title: "CMS",
+                  subtitle: "Le contenu edito",
+                  link: "/cms",
+                },
+                {
+                  title: "PIM",
+                  subtitle: "Vos produits",
+                  link: "/pim",
+                },
+                {
+                  title: "Recherche",
+                  subtitle: "Pertinence, performance, outil marketing",
+                  link: "/search",
                 },
               ]}
             />
-            <MenuItem
-              isOn={getStateForMenu("cms")}
-              setIsOn={setStateForMenu("cms")}
-              title="CMS"
-            />
-            <MenuItem
-              isOn={getStateForMenu("front")}
-              setIsOn={setStateForMenu("front")}
-              title="Front"
-            />
-            <MenuItem
-              isOn={getStateForMenu("pim")}
-              setIsOn={setStateForMenu("pim")}
-              title="Produits"
-            />
-            <MenuItem
-              isOn={getStateForMenu("search")}
-              setIsOn={setStateForMenu("search")}
-              title="Recherche"
-            />
-            <a
-              href="#"
-              className="text-base font-medium text-gray-500 hover:text-gray-900"
-            >
-              Pricing
-            </a>
-            <a
-              href="#"
-              className="text-base font-medium text-gray-500 hover:text-gray-900"
-            >
-              Docs
-            </a>
+            <MenuItem title="MACH Alliance" link="/" />
           </nav>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0"></div>
         </div>

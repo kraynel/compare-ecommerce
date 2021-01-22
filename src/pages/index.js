@@ -7,6 +7,16 @@ import syliusLogo from "../assets/sylius.svg"
 import vuestorefrontLogo from "../assets/vuestorefront.svg"
 import contentfulLogo from "../assets/contentful.svg"
 
+import { Link } from "gatsby"
+
+const categoryDetails = {
+  checkout: { link: "/global", title: "Core ecommerce" },
+  front: { link: "/front", title: "Front" },
+  products: { link: "/pim", title: "PIM" },
+  search: { link: "/search", title: "Recherche" },
+  content: { link: "/cms", title: "Contenu édito" },
+}
+
 const categories = {
   checkout: {
     shopify: 0,
@@ -129,7 +139,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <div className="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
+      <div className="flex flex-col w-full justify-center lg:items-start overflow-y-hidden">
         <h1 className="my-4 text-3xl md:text-5xl text-purple-800 font-bold leading-tight text-center md:text-left slide-in-bottom-h1">
           Construisez votre stack e-commerce !
         </h1>
@@ -138,7 +148,7 @@ export default function Home() {
           best-of-breed
         </p>
       </div>
-      <div className="pl-32  flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
+      <div className="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
         <p className="mb-4 font-bold text-gray-900">
           {currentQuestion && currentQuestion.label}
         </p>
@@ -195,7 +205,9 @@ export default function Home() {
 
               return (
                 <div className="capitalize" key={category}>
-                  {category} :{" "}
+                  <Link className="mr-2" to={categoryDetails[category].link}>
+                    {categoryDetails[category].title} :
+                  </Link>
                   {getLogo(maxName) && (
                     <img
                       className="w-20 inline-block"

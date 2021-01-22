@@ -10,9 +10,9 @@ export default function Layout({ children }) {
     >
       <Menu />
 
-      <div className="container pt-16 md:pt-32 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+      <div className="container mx-auto items-center pt-12 px-40">
         {children}
-        <div className="w-full pt-16 pb-6 text-sm text-center md:text-left fade-in">
+        <div className="w-full pt-16 pb-6 text-sm text-center md:text-left">
           <span className="text-gray-500 no-underline hover:no-underline">
             &copy; Theodo - {new Date().getFullYear()}
           </span>
