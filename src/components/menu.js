@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import theodo from "../assets/theodo.svg"
 import MenuItem from "./menu-item"
 import { Link } from "gatsby"
+
 export default function Menu() {
   const [openStates, setOpenStates] = useState({})
   const getStateForMenu = menu => openStates[menu] || false
