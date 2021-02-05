@@ -18,9 +18,8 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-  console.log(result)
+
   result.data.allContentfulECommerceCore.nodes.forEach(node => {
-    console.log(node)
     createPage({
       path: "/global/" + node.title,
       component: path.resolve(`./src/templates/core.js`),
