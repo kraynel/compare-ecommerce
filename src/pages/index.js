@@ -10,6 +10,7 @@ import contentfulLogo from "../assets/contentful.svg"
 import commercetoolsLogo from "../assets/commercetools.svg"
 
 import { Link } from "gatsby"
+import ShopifyDesc from "../components/shopify-desc"
 
 const categoryDetails = {
   checkout: { link: "/global", title: "Core ecommerce" },
@@ -34,7 +35,37 @@ const questions = [
     answers: [
       {
         label: "Le lancement d'un nouveau site",
-        ponderation: [{ category: "checkout", key: "shopify", value: 1 }],
+        answerLabel: "Vous lancez un nouveau site de e-commerce",
+        ponderation: [
+          {
+            category: "checkout",
+            key: "shopify",
+            value: 1,
+            arg: () => (
+              <>
+                <p>
+                  Pour le lancement de votre site, privilégiez l'approche "POC"
+                  pour tester votre idée et trouver le product / market fit. En
+                  utilisant Shopify, une solution très peu coûteuse à mettre en
+                  place, vous pourrez lancer votre site sans des délais très
+                  courts, en quelques jours, et rentrer au contact des
+                  utilisateurs.
+                </p>
+                <p>
+                  {" "}
+                  Après les premières ventes, vous pourrez capitaliser sur de
+                  premiers précieux insights pour affiner votre offre, votre
+                  organisation logistique et votre stratégie d'acquisition et de
+                  conversion. Vous serez également à même d'analyser les données
+                  utilisateurs grâce aux nombreux plugins proposés par Shopify
+                  afin de continuer à améliorer votre store en réalisant des
+                  investissements plus poussés sur des fonctionnalités plus
+                  personnalisées.
+                </p>
+              </>
+            ),
+          },
+        ],
       },
       {
         label: "La refonte d'un site existant",
@@ -51,11 +82,87 @@ const questions = [
     answers: [
       {
         label: "Entre 0 et 100 k€",
-        ponderation: [{ category: "checkout", key: "shopify", value: 2 }],
+        answerLabel: "Vous pensez faire moins de 1M€ de CA en années 2 et 3",
+        ponderation: [
+          {
+            category: "checkout",
+            key: "shopify",
+            value: 2,
+            arg: () => (
+              <>
+                <p>
+                  La solution Shopify est parfaitement adaptée pour les sites
+                  générant moins 1 M€ de chiffre d'affaire. L'argument principal
+                  est celui du coût.{" "}
+                </p>
+                <p>
+                  Pour comparer les coûts d'une solution SaaS comme Shopify avec
+                  les solutions all-in-one historiques Open Source comme Magento
+                  ou Prestashop est souvent complexe. Il ne faut pas s’arrêter
+                  aux coûts de licences, mais bien prendre en compte le Total
+                  Cost of Ownership (TCO) : les coûts d’hébergement, de montée
+                  de version, de développements de plugin personnalisés par des
+                  agences expertes, les licences de plugins, les maintenances,
+                  etc..
+                </p>
+                <p>
+                  Sur le moyen terme (moins de 3 ans), les solutions SaaS comme
+                  Shopify sont généralement moins coûteuses que les solutions
+                  historiques, et permettent de lancer des sites avec un coût
+                  progressif.
+                </p>
+                <p>
+                  Sur ce tableau sur lequel nous avons comparé les coûts réels
+                  déclarés par l'un de nos partenaires au CA d'environ 1M€, avec
+                  les coûts théoriques d'un site faisant un chiffre d'affaire
+                  similaire, et réalisé avec Shopify
+                </p>
+              </>
+            ),
+          },
+        ],
       },
       {
         label: "Entre 100 k€ et 1M€",
-        ponderation: [{ category: "checkout", key: "shopify", value: 1 }],
+        answerLabel: "Vous pensez faire moins de 1M€ de CA en années 2 et 3",
+        ponderation: [
+          {
+            category: "checkout",
+            key: "shopify",
+            value: 1,
+            arg: () => (
+              <>
+                <p>
+                  La solution Shopify est parfaitement adaptée pour les sites
+                  générant moins 1 M€ de chiffre d'affaire. L'argument principal
+                  est celui du coût.{" "}
+                </p>
+                <p>
+                  Pour comparer les coûts d'une solution SaaS comme Shopify avec
+                  les solutions all-in-one historiques Open Source comme Magento
+                  ou Prestashop est souvent complexe. Il ne faut pas s’arrêter
+                  aux coûts de licences, mais bien prendre en compte le Total
+                  Cost of Ownership (TCO) : les coûts d’hébergement, de montée
+                  de version, de développements de plugin personnalisés par des
+                  agences expertes, les licences de plugins, les maintenances,
+                  etc..
+                </p>
+                <p>
+                  Sur le moyen terme (moins de 3 ans), les solutions SaaS comme
+                  Shopify sont généralement moins coûteuses que les solutions
+                  historiques, et permettent de lancer des sites avec un coût
+                  progressif.
+                </p>
+                <p>
+                  Sur ce tableau sur lequel nous avons comparé les coûts réels
+                  déclarés par l'un de nos partenaires au CA d'environ 1M€, avec
+                  les coûts théoriques d'un site faisant un chiffre d'affaire
+                  similaire, et réalisé avec Shopify
+                </p>
+              </>
+            ),
+          },
+        ],
       },
       {
         label: "Plus d'1M€",
@@ -73,12 +180,106 @@ const questions = [
     answers: [
       {
         label: "< 20 k€",
-        ponderation: [{ category: "checkout", key: "shopify", value: 1 }],
+        answerLabel: "Vous avez un budget <20k pour l'implémentation",
+        ponderation: [
+          {
+            category: "checkout",
+            key: "shopify",
+            value: 1,
+            arg: () => (
+              <>
+                <p>
+                  Shopify vous permet de lancer une boutique parfaitement
+                  fonctionnelle en quelques heures. L'essentiel du travail à
+                  réaliser est un travail de configuration : ajout des fiches
+                  produits, En vous basant sur les templates proposés par
+                  Shopify et la communauté, et en configurant les nombreuses
+                  fonctionnalités proposées nativement, vous pouvez dans un
+                  premier temps lancer un premier MVP rapidement pour tester
+                  votre idée et réaliser vos premières ventes sans réaliser un
+                  investissement trop important.
+                </p>
+                <p>
+                  L'ajout de plugins, dont certains sont gratuits, vous
+                  permettra de compléter avec d'éventuelles fonctionnalités qui
+                  vous paraitraient manquantes : retargeting, fidélité, chèques
+                  cadeaux, etc...
+                </p>
+                <p>
+                  Vous pouvez pour configurer votre boutique vous appuyer sur un
+                  freelance expert en Shopify, passer par une agence
+                  spécialisée, ou le faire vous-même en vous aidant de la
+                  documentation très fournie proposée par l'éditeur.
+                </p>
+              </>
+            ),
+          },
+        ],
       },
       {
         label: "Entre 20 et 100 k€",
+        answerLabel:
+          "Vous avez un budget compris entre 20k et 100k pour l'implémentation",
         ponderation: [
-          { category: "checkout", key: "shopify", value: 1 },
+          {
+            category: "checkout",
+            key: "shopify",
+            value: 1,
+            arg: () => (
+              <>
+                <p>
+                  Dans ce budget, vous pourrez lancer une boutique avec un
+                  design personnalisé, éventuellement quelques fonctionnalités
+                  custom en plus du natif Shopify.
+                </p>
+
+                <p>
+                  Dans un premier temps, nous vous recommandons de lancer
+                  rapidement un POC (Proof of Concept) très rapidement pour
+                  commencer à avoir des premiers retours utilisateurs. Shopify
+                  vous permet de lancer une boutique parfaitement fonctionnelle
+                  en quelques heures. L'essentiel du travail à réaliser est un
+                  travail de configuration : ajout des fiches produits, En vous
+                  basant sur les templates proposés par Shopify et la
+                  communauté, et en configurant les nombreuses fonctionnalités
+                  proposées nativement, vous pouvez dans un premier temps lancer
+                  un premier MVP rapidement pour tester votre idée et réaliser
+                  vos premières ventes sans réaliser un investissement trop
+                  important.
+                </p>
+
+                <p>
+                  L'ajout de plugins, dont certains sont gratuits, vous
+                  permettra de compléter avec d'éventuelles fonctionnalités qui
+                  vous paraitraient manquantes : retargeting, fidélité, chèques
+                  cadeaux, etc...
+                </p>
+
+                <p>
+                  Dans un second temps, vous pourrez vous baser sur les retours
+                  utilisateurs pour pousser la personnalisation :
+                </p>
+                <ul>
+                  <li>
+                    Possibilité de personnaliser, grâce au langage Liquid, les
+                    templates front-end, qui utilisent le langage Liquid, très
+                    simple à maîtriser pour tout développeur connaissant les
+                    bases du HTML ou du CSS
+                  </li>
+                  <li>
+                    Intégrer des app en javascript directement dans le code
+                  </li>
+                  <li>Créer vos propres apps custom</li>
+                  <li>
+                    Vous connecter à des briques externes (logistique ou
+                    marketing par exemple) grâce à la très puissante core API
+                    rest
+                  </li>
+                </ul>
+              </>
+            ),
+          },
+
           { category: "checkout", key: "shopifyplus", value: 1 },
         ],
       },
@@ -101,7 +302,26 @@ const questions = [
       },
       {
         label: "non",
-        ponderation: [{ category: "checkout", key: "shopify", value: 1 }],
+        answerLabel:
+          "Vous n'avez pas d'attente poussée pour la personnalisation du design du front",
+        ponderation: [
+          {
+            category: "checkout",
+            key: "shopify",
+            value: 1,
+            arg: () => (
+              <>
+                <p>
+                  Niveau 1 : choisir et utiliser un template proposé par Shopify
+                </p>
+                <p>
+                  Eventuellement, possibilité de le personnaliser en le mettant
+                  à vos couleurs
+                </p>
+              </>
+            ),
+          },
+        ],
       },
     ],
   },
@@ -118,6 +338,8 @@ const questions = [
       },
       {
         label: "non",
+        answerLabel:
+          "Vous n'avez pas de besoins fonctionnels très personnalisés",
         ponderation: [
           { category: "checkout", key: "shopifyplus", value: 1 },
           { category: "checkout", key: "shopify", value: 1 },
@@ -152,6 +374,7 @@ const questions = [
       },
       {
         label: "Non",
+        answerLabel: "Vous n'avez pas d'équipe technique en interne",
         ponderation: [
           { category: "checkout", key: "shopifyplus", value: 1 },
           { category: "checkout", key: "shopify", value: 1 },
@@ -187,6 +410,7 @@ const getLogo = name => {
 export default function Home() {
   const [questionIndex, setQuestionIndex] = useState(0)
   const [scores, setScores] = useState(categories)
+  const [args, setArgs] = useState([])
 
   const currentQuestion = questions[questionIndex] ?? null
   let maxScore = 0
@@ -209,7 +433,7 @@ export default function Home() {
           best-of-breed
         </p>
       </div>
-      <div className="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
+      <div className="flex flex-col w-full justify-center lg:items-start overflow-y-hidden">
         <p className="mb-4 font-bold text-gray-900">{currentQuestion?.label}</p>
         {currentQuestion?.sublabel && (
           <p className="text-gray-700">{currentQuestion.sublabel}</p>
@@ -230,6 +454,16 @@ export default function Home() {
                     })
                     return newScores
                   })
+                  setArgs(args => {
+                    a.ponderation.forEach(p => {
+                      args.push({
+                        label: a.answerLabel,
+                        key: p.key,
+                        arg: p.arg,
+                      })
+                    })
+                    return args
+                  })
                   setQuestionIndex(index => index + 1)
                 }}
               >
@@ -242,6 +476,7 @@ export default function Home() {
               onClick={() => {
                 setQuestionIndex(0)
                 setScores(categories)
+                setArgs([])
               }}
               value="reset"
             >
@@ -265,6 +500,7 @@ export default function Home() {
                   maxName = tech
                 }
               })
+
               return (
                 <div key={category}>
                   <Link className="mr-2" to={categoryDetails[category].link}>
@@ -277,38 +513,18 @@ export default function Home() {
                       alt={maxName}
                     />
                   )}
-                  {maxName === "shopify" && (
-                    <div className="mt-5">
-                      <p>
-                        Le SaaS créé il y a 15 ans s'impose comme l'une des
-                        technologies incontournables du e-commerce. Challenger
-                        du{" "}
-                        <a href="https://www.cms-connected.com/News-Archive/December-2019/Gartner-Magic-Quadrant-for-Digital-Commerce-2019-Review">
-                          Gartner Magic Quadrant
-                        </a>
-                        en 2020, Shopify est une solution qui malgré son image
-                        de CMS à destination des petits acteurs, a su
-                        accompagner la croissance de pure players au chiffre
-                        d'affaire de plus de trois chiffres.
-                      </p>
-
-                      <p className="mt-5 font-bold">
-                        Fiche d'identité de Shopify
-                      </p>
-                      <ul className="list-disc">
-                        <li>Année de création : 2006</li>
-                        <li>Type de CMS : SaaS</li>
-                        <li>Headless : oui</li>
-                        <li>Licence : entre 29$ et 299 $ / mois</li>
-                        <li>Commission sur les ventes</li>
-                        <li>Ventes : de 0,5% à 2%</li>
-                        <li>
-                          Clients 100M$ de CA : Tesla, Gymshark, Kylie Cosmetics
-                        </li>
-                        <li>Clients en France : Asphalte, Tesla</li>
-                      </ul>
-                    </div>
-                  )}
+                  {maxName === "shopify" && <ShopifyDesc />}
+                  {args
+                    .filter(
+                      ({ key, arg, label }) =>
+                        key === maxName && typeof arg === "function" && label
+                    )
+                    .map(({ label, arg }, index) => (
+                      <details className="mt-4" key={index}>
+                        <summary className="font-bold">{label}</summary>
+                        {arg()}
+                      </details>
+                    ))}
                 </div>
               )
             })}
