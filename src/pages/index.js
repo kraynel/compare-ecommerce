@@ -60,7 +60,7 @@ export default function Home() {
                   if (a?.ponderations) {
                     setScores(scores => {
                       let newScores = { ...scores }
-                      a?.ponderations?.forEach(p => {
+                      a.ponderations.forEach(p => {
                         newScores = { ...scores }
                         if (!newScores[p.ecommercecore.title]) {
                           newScores[p.ecommercecore.title] = 0
@@ -72,7 +72,7 @@ export default function Home() {
 
                     if (a?.argumentTitle) {
                       setArgs(args => {
-                        a?.ponderations?.forEach(p => {
+                        a.ponderations.forEach(p => {
                           args.push({
                             label: a.argumentTitle.argumentTitle,
                             key: p.ecommercecore.title,

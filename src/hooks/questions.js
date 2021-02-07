@@ -3,7 +3,10 @@ import { useStaticQuery, graphql } from "gatsby"
 export const useAllQuestions = () => {
   const result = useStaticQuery(graphql`
     {
-      allContentfulQuestion(filter: { node_locale: { eq: "fr-FR" } }) {
+      allContentfulQuestion(
+        filter: { node_locale: { eq: "fr-FR" } }
+        sort: { fields: order }
+      ) {
         nodes {
           title {
             title
