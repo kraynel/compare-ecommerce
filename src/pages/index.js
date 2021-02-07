@@ -57,28 +57,31 @@ export default function Home() {
                 value={a.title.title}
                 key={a.title.title}
                 onClick={e => {
-                  setScores(scores => {
-                    let newScores = { ...scores }
-                    a.ponderations.forEach(p => {
-                      newScores = { ...scores }
-                      if (!newScores[p.ecommercecore.title]) {
-                        newScores[p.ecommercecore.title] = 0
-                      }
-                      newScores[p.ecommercecore.title] += p.weight
-                    })
-                    return newScores
-                  })
-                  if (a?.argumentTitle) {
-                    setArgs(args => {
-                      a.ponderations.forEach(p => {
-                        args.push({
-                          label: a.argumentTitle.argumentTitle,
-                          key: p.ecommercecore.title,
-                          arg: p.argument.raw,
-                        })
+                  if (a?.ponderations) {
+                    setScores(scores => {
+                      let newScores = { ...scores }
+                      a?.ponderations?.forEach(p => {
+                        newScores = { ...scores }
+                        if (!newScores[p.ecommercecore.title]) {
+                          newScores[p.ecommercecore.title] = 0
+                        }
+                        newScores[p.ecommercecore.title] += p.weight
                       })
-                      return args
+                      return newScores
                     })
+
+                    if (a?.argumentTitle) {
+                      setArgs(args => {
+                        a?.ponderations?.forEach(p => {
+                          args.push({
+                            label: a.argumentTitle.argumentTitle,
+                            key: p.ecommercecore.title,
+                            arg: p.argument.raw,
+                          })
+                        })
+                        return args
+                      })
+                    }
                   }
                   setQuestionIndex(index => index + 1)
                 }}
@@ -120,7 +123,9 @@ export default function Home() {
                   )
                 : null}
               {args
-                .filter(({ key, label }) => key === maxName && label)
+                .filter(
+                  ({ key, label, arg }) => key === maxName && label && arg
+                )
                 .map(({ label, arg }, index) => (
                   <details className="mt-4" key={index}>
                     <summary className="font-bold">{label}</summary>
