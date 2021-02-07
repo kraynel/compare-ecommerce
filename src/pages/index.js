@@ -76,7 +76,7 @@ export default function Home() {
                           args.push({
                             label: a.argumentTitle.argumentTitle,
                             key: p.ecommercecore.title,
-                            arg: p.argument.raw,
+                            arg: p?.argument?.raw,
                           })
                         })
                         return args
