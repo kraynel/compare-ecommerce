@@ -109,7 +109,7 @@ export default function Home() {
               <span className="mb-4 font-bold text-gray-900">
                 Notre recommandation
               </span>
-              <Link className="m-2" to="/global">
+              <Link className="m-2" to={`/global/${winner.title}`}>
                 {winner.title}{" "}
                 <GatsbyImage
                   className="w-20 inline-block"
