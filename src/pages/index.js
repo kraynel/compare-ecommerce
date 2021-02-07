@@ -6,7 +6,6 @@ import { useAllEcommerceCore } from "../hooks/ecommercecore"
 
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
-import ShopifyDesc from "../components/shopify-desc"
 
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
@@ -120,7 +119,6 @@ export default function Home() {
                     JSON.parse(winner?.description?.raw)
                   )
                 : null}
-              {maxName === "Shopify" && <ShopifyDesc />}
               {args
                 .filter(({ key, label }) => key === maxName && label)
                 .map(({ label, arg }, index) => (
