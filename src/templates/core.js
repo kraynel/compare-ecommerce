@@ -7,9 +7,9 @@ import { GatsbyImage } from "gatsby-plugin-image"
 export default function Core({ data }) {
   return (
     <Layout>
-      <h1>{data.contentfulECommerceCore.title}</h1>
       <GatsbyImage
-        className="w-20 inline-block"
+        critical
+        className="w-150 inline-block"
         image={data.contentfulECommerceCore.logo.gatsbyImageData}
         alt={data.contentfulECommerceCore.title}
       />
@@ -32,7 +32,7 @@ export const query = graphql`
         raw
       }
       logo {
-        gatsbyImageData(width: 50)
+        gatsbyImageData(width: 150)
       }
     }
   }

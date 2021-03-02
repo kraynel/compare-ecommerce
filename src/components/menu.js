@@ -2,12 +2,14 @@ import React, { useState } from "react"
 import theodo from "../assets/theodo.svg"
 import MenuItem from "./menu-item"
 import { Link } from "gatsby"
+import { useAllEcommerceCore } from "../hooks/ecommercecore"
 
 export default function Menu() {
   const [openStates, setOpenStates] = useState({})
   const getStateForMenu = menu => openStates[menu] || false
   const setStateForMenu = menu => newState =>
     setOpenStates({ [menu]: newState })
+  const ecommerceCores = useAllEcommerceCore()
 
   return (
     <div className="relative bg-white">
@@ -16,7 +18,13 @@ export default function Menu() {
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <Link to="/">
               <span className="sr-only">Theodo</span>
-              <img className="h-8 w-auto sm:h-10" src={theodo} alt="" />
+              <img
+                className="h-8 w-auto sm:h-10"
+                src={theodo}
+                height="10"
+                width="8"
+                alt=""
+              />
             </Link>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
@@ -44,40 +52,17 @@ export default function Menu() {
             </button>
           </div>
           <nav className="hidden md:flex space-x-10">
-            <MenuItem title="Stack builder" link="/" />
+            <MenuItem title="Stack builder" link="/builder" />
             <MenuItem
               isOn={getStateForMenu("core")}
               setIsOn={setStateForMenu("core")}
               title="Briques e-commerce"
-              subitems={[
-                {
-                  title: "Core",
-                  subtitle: "Le moteur principal",
-                  link: "/global",
-                },
-                {
-                  title: "Front",
-                  subtitle: "Votre vitrine",
-                  link: "/front",
-                },
-                {
-                  title: "CMS",
-                  subtitle: "Le contenu edito",
-                  link: "/cms",
-                },
-                {
-                  title: "PIM",
-                  subtitle: "Vos produits",
-                  link: "/pim",
-                },
-                {
-                  title: "Recherche",
-                  subtitle: "Pertinence, performance, outil marketing",
-                  link: "/search",
-                },
-              ]}
+              subitems={ecommerceCores.map(({ title }) => ({
+                title,
+                link: `/global/${title}`,
+              }))}
             />
-            <MenuItem title="MACH Alliance" link="/" />
+            <MenuItem title="MACH Alliance" link="https://machalliance.org" />
           </nav>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0"></div>
         </div>

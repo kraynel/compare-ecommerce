@@ -10,7 +10,7 @@ export const useAllEcommerceCore = () => {
           }
           title
           logo {
-            gatsbyImageData(layout: FIXED, width: 50)
+            gatsbyImageData(layout: FIXED, width: 100)
             title
           }
         }
