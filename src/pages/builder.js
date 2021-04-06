@@ -71,7 +71,6 @@ export default function Builder() {
                     setScores(scores => {
                       let newScores = { ...scores }
                       a.ponderations.forEach(p => {
-                        newScores = { ...scores }
                         if (!newScores[p.ecommercecore.title]) {
                           newScores[p.ecommercecore.title] = 0
                         }
