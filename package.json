@@ -14,7 +14,7 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "@aaronhayes/react-use-hubspot-form": "^1.2.4",
+    "@aaronhayes/react-use-hubspot-form": "1.2.4",
     "@contentful/rich-text-react-renderer": "14.1.2",
     "@headlessui/react": "0.2.0",
     "autoprefixer": "10.2.3",
