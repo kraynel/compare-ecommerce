@@ -62,7 +62,15 @@ export default function Menu() {
                 link: `/global/${title}`,
               }))}
             />
-            <MenuItem title="MACH Alliance" link="https://machalliance.org" />
+            <a
+              className={`group bg-white rounded-md text-gray-500 inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://machalliance.org"
+            >
+              MACH Alliance
+            </a>
+            <MenuItem title="Contact" link="/contact" />
           </nav>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0"></div>
         </div>
