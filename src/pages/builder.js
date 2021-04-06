@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import Layout from "../components/layout"
 
 import { useAllQuestions } from "../hooks/questions"
@@ -14,6 +14,7 @@ export default function Builder() {
   const [scores, setScores] = useState({})
   const [args, setArgs] = useState([])
   const [answers, setAnswers] = useState([])
+  const resultRef = useRef(null)
 
   const questions = useAllQuestions()
   const ecommerceCores = useAllEcommerceCore()
@@ -31,6 +32,12 @@ export default function Builder() {
     }
   })
   const winner = ecommerceCores.find(c => c.title === maxName)
+
+  useEffect(() => {
+    if (!currentQuestion) {
+      resultRef.current.scrollIntoView({ behavior: "smooth" })
+    }
+  }, [resultRef, currentQuestion])
 
   return (
     <Layout>
@@ -118,7 +125,7 @@ export default function Builder() {
           )}
         </p>
         {!currentQuestion && (
-          <div className="mt-10">
+          <div className="mt-10" ref={resultRef}>
             <div>
               <h2 className="my-4 text-2xl md:text-4xl text-purple-800 font-bold leading-tight text-center md:text-left">
                 Notre recommandation : {winner.title}
