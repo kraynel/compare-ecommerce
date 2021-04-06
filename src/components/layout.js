@@ -1,5 +1,4 @@
 import React from "react"
-import bg from "../assets/bg.svg"
 import Menu from "./menu"
 import theodo from "../assets/theodo.svg"
 
