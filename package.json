@@ -16,7 +16,7 @@
   "dependencies": {
     "@aaronhayes/react-use-hubspot-form": "^1.2.4",
     "@contentful/rich-text-react-renderer": "14.1.2",
-    "@headlessui/react": "0.2.0",
+    "@headlessui/react": "1.7.18",
     "autoprefixer": "10.2.3",
     "dotenv": "8.2.0",
     "gatsby": "2.24.79",
