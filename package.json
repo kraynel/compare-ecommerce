@@ -23,7 +23,7 @@
     "gatsby-plugin-postcss": "3.0.3",
     "gatsby-plugin-sharp": "2.14.0",
     "gatsby-source-contentful": "4.6.0",
-    "postcss": "8.2.4",
+    "postcss": "8.4.38",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
