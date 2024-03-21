@@ -17,7 +17,7 @@
     "@aaronhayes/react-use-hubspot-form": "^1.2.4",
     "@contentful/rich-text-react-renderer": "14.1.2",
     "@headlessui/react": "0.2.0",
-    "autoprefixer": "10.2.3",
+    "autoprefixer": "10.4.19",
     "dotenv": "8.2.0",
     "gatsby": "2.24.79",
     "gatsby-plugin-postcss": "3.0.3",
